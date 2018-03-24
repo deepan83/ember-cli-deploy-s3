@@ -1,7 +1,7 @@
 /* jshint node: true */
 'use strict';
 
-var Promise   = require('ember-cli/lib/ext/promise');
+var RSVP      = require('rsvp');
 var minimatch = require('minimatch');
 var DeployPluginBase = require('ember-cli-deploy-plugin');
 var S3             = require('./lib/s3');
@@ -81,6 +81,8 @@ module.exports = {
           batchSize: batchSize
         };
 
+        console.log(options);
+
         if (serverSideEncryption) {
           options.serverSideEncryption = serverSideEncryption;
         }
@@ -99,7 +101,7 @@ module.exports = {
         if (error) {
           this.log(error.stack, { color: 'red' });
         }
-        return Promise.reject(error);
+        return RSVP.reject(error);
       }
     });
     return new DeployPlugin();

@@ -5,7 +5,7 @@ var chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
 
 var assert = chai.assert;
-var Promise = require('ember-cli/lib/ext/promise');
+var RSVP = require('rsvp');
 
 describe('s3 plugin', function() {
   var subject;
